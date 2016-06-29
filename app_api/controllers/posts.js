@@ -12,7 +12,9 @@ module.exports.postsCreate = function (req, res) {
   title: req.body.title,
   author: req.body.author,
   keywords: req.body.keywords.split(","),
-  content: req.body.content
+  content: req.body.content,
+  image: req.body.image,
+  category: req.category,
 
 }, function(err, post) {
     if (err) {
@@ -27,7 +29,21 @@ module.exports.postsCreate = function (req, res) {
 
 
 module.exports.postsListAll = function (req, res) {
-  sendJsonResponse(res, 200, {"status" : "success"});
+  Post
+  .find()
+  .exec(function(err, posts) {
+    if(!posts) {
+      sendJsonResponse(res, 404, {
+        "message" : "Posts is empty"
+      });
+      return;
+    } else if (err) {
+      sendJsonResponse(res, 404, err);
+      return;
+    }
+    sendJsonResponse(res, 200, posts);
+  });
+
 };
 
 module.exports.postsReadOne = function (req, res) {
