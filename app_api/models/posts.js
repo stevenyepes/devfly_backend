@@ -18,7 +18,8 @@ var PostSchema = new mongoose.Schema({
   views: Number,
   image: { data: Buffer, contentType: String },
   category: {type: String, required: true},
-  reviews : [reviewSchema]
+  reviews : [reviewSchema],
+  modified: {type:Date} 
 });
 
 
