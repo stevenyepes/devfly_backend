@@ -2,7 +2,7 @@ var mongoose = require( 'mongoose' );
 
 var dbURI = 'mongodb://localhost/devfly';
 if (process.env.NODE_ENV === 'production') {
-  dbURI = process.env.MONGOLAB_URI;
+  dbURI = 'mongodb://$OPENSHIFT_MONGODB_DB_HOST:$OPENSHIFT_MONGODB_DB_PORT/';
 }
 mongoose.connect(dbURI);
 
