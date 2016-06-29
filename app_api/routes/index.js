@@ -10,9 +10,9 @@ router.get('/posts/:postid', ctrlPosts.postsReadOne);
 router.put('/posts/:postid', ctrlPosts.postsUpdateOne);
 router.delete('/posts/:postid', ctrlPosts.postsDeleteOne);
 // reviews
-//router.post('/locations/:locationid/reviews', ctrlReviews.reviewsCreate);
-//router.get('/locations/:locationid/reviews/:reviewid', ctrlReviews.reviewsReadOne);
-//router.put('/locations/:locationid/reviews/:reviewid', ctrlReviews.reviewsUpdateOne);
-//router.delete('/locations/:locationid/reviews/:reviewid', ctrlReviews.reviewsDeleteOne);
+router.post('/posts/:postid/reviews', ctrlReviews.reviewsCreate);
+router.get('/posts/:postid/reviews/:reviewid', ctrlReviews.reviewsReadOne);
+router.put('/posts/:postid/reviews/:reviewid', ctrlReviews.reviewsUpdateOne);
+router.delete('/posts/:postid/reviews/:reviewid', ctrlReviews.reviewsDeleteOne);
 
 module.exports = router;
