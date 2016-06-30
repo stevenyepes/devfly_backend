@@ -15,7 +15,7 @@ module.exports.postsCreate = function (req, res) {
   keywords: req.body.keywords.split(","),
   content: req.body.content,
   image: req.body.image,
-  category: req.category,
+  category: req.body.category,
 
 }, function(err, post) {
     if (err) {
