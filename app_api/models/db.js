@@ -52,5 +52,7 @@ process.on('SIGTERM', function() {
   });
 });
 
-// Require the locations model
+// Require the posts model
 require('./posts');
+// Require the users model
+require('./users');

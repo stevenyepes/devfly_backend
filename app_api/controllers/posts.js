@@ -12,16 +12,16 @@ module.exports.postsCreate = function (req, res) {
   Post.create({
   title: req.body.title,
   author: req.body.author,
-  keywords: req.body.keywords.split(","),
+  keywords: req.body.keywords.replace(/\s/g, "").split(","),
   content: req.body.content,
   image: req.body.image,
   category: req.body.category,
 
 }, function(err, post) {
     if (err) {
-        sendJSONResponse(res, 400, err);
+        sendJSONResponse(res, 204, err);
     } else {
-        sendJSONResponse(res, 201, post);
+        sendJSONResponse(res, 200, post);
     }
   });
 
@@ -42,7 +42,7 @@ module.exports.postsListAll = function (req, res) {
       sendJSONResponse(res, 404, err);
       return;
     }
-    sendJSONResponse(res, 200, posts);
+    sendJSONResponse(res, 404, posts);
   });
 
 };
@@ -97,7 +97,7 @@ module.exports.postsUpdateOne = function(req, res) {
         }
         post.title = req.body.title;
         post.content = req.body.content;
-        post.keywords = req.body.keywords.split(",");
+        post.keywords = req.body.keywords.replace(/\s/g, "").split(",");
         post.category = req.body.category;
         post.image.data = fs.readFileSync(req.body.image);
         post.image.contentType = 'image/png';

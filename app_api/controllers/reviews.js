@@ -1,6 +1,35 @@
 var mongoose = require('mongoose');
 var Post = mongoose.model('Post');
 
+var User = mongoose.model('User');
+
+var getAuthor = function(req, res, callback) {
+  if (req.payload && req.payload.email) {
+    User
+    .findOne({ email : req.payload.email })
+    .exec(function(err, user) {
+      if (!user) {
+        sendJSONresponse(res, 404, {
+          "message": "User not found"
+      });
+      return;
+    } else if (err) {
+      console.log(err);
+      sendJSONresponse(res, 404, err);
+      return;
+    }
+      callback(req, res, user.name);
+    });
+  } else {
+    sendJSONresponse(res, 404, {
+      "message": "User not found"
+    });
+    return;
+  }
+};
+
+
+
 var sendJSONresponse = function(res, status, content) {
   res.status(status);
   res.json(content);
@@ -9,33 +38,36 @@ var sendJSONresponse = function(res, status, content) {
 /* POST a new review, providing a postid */
 /* /api/v1/posts/:postid/reviews */
 module.exports.reviewsCreate = function(req, res) {
-  if (req.params.postid) {
-    Post
-      .findById(req.params.postid)
-      .select('reviews')
-      .exec(
-        function(err, post) {
-          if (err) {
-            sendJSONresponse(res, 400, err);
-          } else {
-            doAddReview(req, res, post);
+  getAuthor(req, res, function (req, res, userName) {
+    if (req.params.postid) {
+      Post
+        .findById(req.params.postid)
+        .select('reviews')
+        .exec(
+          function(err, post) {
+            if (err) {
+              sendJSONresponse(res, 400, err);
+            } else {
+              doAddReview(req, res, post, userName);
+            }
           }
-        }
-    );
-  } else {
-    sendJSONresponse(res, 404, {
-      "message": "Not found, post id required"
-    });
-  }
+      );
+    } else {
+      sendJSONresponse(res, 404, {
+        "message": "Not found, post id required"
+      });
+
+    }
+  });
 };
 
 
-var doAddReview = function(req, res, post) {
+var doAddReview = function(req, res, post, author) {
   if (!post) {
     sendJSONresponse(res, 404, "postid not found");
   } else {
     post.reviews.push({
-      author: req.body.author,
+      author: author,
       rating: req.body.rating,
       reviewText: req.body.reviewText
     });
