@@ -1,6 +1,31 @@
 var mongoose = require('mongoose');
 var Post = mongoose.model('Post');
+var User = mongoose.model('User');
 
+var getAuthor = function(req, res, callback) {
+  if (req.payload && req.payload.email) {
+    User
+    .findOne({ email : req.payload.email })
+    .exec(function(err, user) {
+      if (!user) {
+        sendJSONresponse(res, 404, {
+          "message": "User not found"
+      });
+      return;
+    } else if (err) {
+      console.log(err);
+      sendJSONresponse(res, 404, err);
+      return;
+    }
+      callback(req, res, user.username);
+    });
+  } else {
+    sendJSONresponse(res, 404, {
+      "message": "User not found"
+    });
+    return;
+  }
+};
 
 var sendJSONResponse = function(res, status, content) {
   res.status(status);
@@ -9,22 +34,30 @@ var sendJSONResponse = function(res, status, content) {
 
 /* POST /api/v1/posts/ */
 module.exports.postsCreate = function (req, res) {
-  Post.create({
-  title: req.body.title,
-  author: req.body.author,
-  keywords: req.body.keywords.replace(/\s/g, "").split(","),
-  content: req.body.content,
-  image: req.body.image,
-  category: req.body.category,
-
-}, function(err, post) {
-    if (err) {
-        sendJSONResponse(res, 204, err);
-    } else {
-        sendJSONResponse(res, 200, post);
+  getAuthor(req, res, function (req, res, username) {
+    if(!req.body.keywords || !req.body.title || !req.body.content || !req.body.category) {
+      sendJSONResponse(res, 404, {
+        "message": "All fields are required"
+      });
+      console.log("no keywords");
+      return;
     }
-  });
+    Post.create({
+      title: req.body.title,
+      author: username,
+      keywords: req.body.keywords.replace(/\s/g, "").split(","),
+      content: req.body.content,
+      image: req.body.image,
+      category: req.body.category,
 
+    }, function(err, post) {
+      if (err) {
+          sendJSONResponse(res, 204, err);
+      } else {
+          sendJSONResponse(res, 200, post, username);
+      }
+    });
+  });
 
 };
 
