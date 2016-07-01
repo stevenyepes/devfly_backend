@@ -1,31 +1,41 @@
 extends layout
 
 block content
-  //- Brand
-  .container
-    center
-      h4 DevFly
 
-  //- Navigation bar
-  nav.navbar.navbar-default
+  //- Gigantic header background
+  .header-background-grey
+  //- What is inside the gigantic header background
+  .header-content
+
+    //- Brand
     .container
-      .navbar-header
-        //- Button for mobile uncollapse
-        button.navbar-toggle.collapsed(
-          type='button'
-          data-toggle='collapse'
-          data-target='#index-navbar'
-          aria-expanded='false'
-        )
-          span.sr-only Toggle Navigation
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
-        //-Brand link if needed
-        //-a.navbar-brand Brand
+      center
+        h4.brand-text DevFly
 
-      #index-navbar.collapse.navbar-collapse
-        ul.nav.navbar-nav
-          li: a(href='#') Link
-          li: a(href='#') Link
-          li: a(href='#') Link
+    //- Navigation bar
+    nav.navbar.navbar-default
+      .container
+        .navbar-header
+          //- Button for mobile uncollapse
+          button.navbar-toggle.collapsed(
+            type='button'
+            data-toggle='collapse'
+            data-target='#index-navbar'
+            aria-expanded='false'
+          )
+            span.sr-only Toggle Navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          //-Brand link if needed
+          //-a.navbar-brand Brand
+
+        #index-navbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li: a(href='#') Link
+            li: a(href='#') Link
+            li: a(href='#') Link
+
+  .bg-green
+    .container
+      p other stuff

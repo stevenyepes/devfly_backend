@@ -20,3 +20,44 @@ body {
     margin: 0 auto;
     display: table;
     table-layout: fixed; } }
+
+nav ul li {
+  background-color: transparent; }
+
+nav ul li::before {
+  content: "";
+  height: 0%;
+  width: 100%;
+  position: absolute;
+  background-color: #92B74F;
+  -webkit-transition: height 0.2s;
+  transition: height 0.2s; }
+
+nav ul li:hover::before {
+  height: 100%; }
+
+.header-background, .header-background-grey, .header-background-green, .header-background-img {
+  background-repeat: no-repeat;
+  background-position: 100% 50%;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: -1; }
+
+.header-content {
+  height: 100vh;
+  background: transparent; }
+
+.header-background-img {
+  background-image: url(""); }
+
+.bg-grey, .header-background-grey {
+  background-color: #343434; }
+
+.bg-green, .header-background-green {
+  background-color: #92B74F; }
+
+.brand-text {
+  color: #92B74F; }

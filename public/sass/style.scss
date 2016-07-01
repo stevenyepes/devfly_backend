@@ -17,18 +17,19 @@ $brown-logo: #866825;
 // Colours
 $transparent-90: rgba(255, 255, 255, 0.1);
 
+// Body
 body {
   background-color: $grey-logo;
   font-family: $montserrat;
 }
 
+// Navbar
 .navbar-default {
   background-color: transparent;
   @include border-radius(0);
   border-width: 0;
   @include box-shadow(0, 0, 0, 0, rgb(0, 0, 0));
 }
-
 // When is not mobile
 @media (min-width: 768px) {
   // Navbar center-header
@@ -38,4 +39,63 @@ body {
         display: table;
         table-layout: fixed;
     }
+}
+nav {
+  ul {
+    li {
+      background-color: transparent;
+    }
+    li::before {
+      content: "";
+      height: 0%;
+      width: 100%;
+      position: absolute;
+      background-color: $green-logo;
+      @include transition(height);
+    }
+    li:hover::before {
+      height: 100%;
+    }
+  }
+}
+
+// Gigantic Header
+.header-background {
+  background-repeat: no-repeat;
+	background-position: 100% 50%;
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	top:0;
+  left:0;
+  z-index: -1;
+}
+.header-content {
+  height: 100vh;
+  background:transparent;
+}
+.header-background-grey {
+  @extend .header-background;
+  @extend .bg-grey;
+}
+.header-background-green {
+  @extend .header-background;
+  @extend .bg-green;
+}
+.header-background-img {
+  @extend .header-background;
+  background-image: url("");
+}
+
+// Background colors
+.bg-grey {
+  background-color: $grey-logo;
+}
+.bg-green {
+  background-color: $green-logo;
+}
+
+// Brand
+.brand-text {
+  color: $green-logo;
 }
