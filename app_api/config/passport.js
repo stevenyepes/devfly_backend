@@ -3,7 +3,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
-/* Configure passport local Strategy to validate users*/
+/* Configure passport local Strategy to validate users */
 passport.use(new LocalStrategy (
   function(username, password, done) {
     User.findOne({username: username}, function(err, user){
