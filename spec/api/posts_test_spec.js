@@ -1,7 +1,7 @@
 var frisby = require('frisby');
 //var url = 'http://localhost:3000/api/v1/posts';
 
-var url = 'http://devflybldr-devfly.rhcloud.com/api/v1/posts';
+var url = 'http://devfly-devfly.rhcloud.com/api/v1/posts';
 frisby.create('Ensure response has proper JSON types in specified keys')
   .get(url)
   .expectStatus(200)
