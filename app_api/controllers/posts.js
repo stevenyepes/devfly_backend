@@ -39,7 +39,6 @@ module.exports.postsCreate = function (req, res) {
       sendJSONResponse(res, 404, {
         "message": "All fields are required"
       });
-      console.log("no keywords");
       return;
     }
     Post.create({
