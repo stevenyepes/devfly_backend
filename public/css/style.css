@@ -1,0 +1,22 @@
+@import 'https://fonts.googleapis.com/css?family=Montserrat|Raleway';
+body {
+  background-color: #343434;
+  font-family: "Montserrat", sans-serif; }
+
+.navbar-default {
+  background-color: transparent;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  border-radius: 0;
+  border-width: 0;
+  -moz-box-shadow: 0 0 0 0 black;
+  -webkit-box-shadow: 0 0 0 0 black;
+  box-shadow: 0 0 0 0 black; }
+
+@media (min-width: 768px) {
+  .navbar-nav {
+    float: none;
+    margin: 0 auto;
+    display: table;
+    table-layout: fixed; } }

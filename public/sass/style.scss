@@ -1,0 +1,41 @@
+// Imports
+@import 'mixin';
+
+// Google font imports
+@import 'https://fonts.googleapis.com/css?family=Montserrat|Raleway';
+
+// Fonts
+$montserrat: 'Montserrat', sans-serif;
+$raleway: 'Raleway', sans-serif;
+
+// These are the logo colours
+$green-logo: #92B74F;
+$yellow-logo: #FEEF41;
+$grey-logo: #343434;
+$brown-logo: #866825;
+
+// Colours
+$transparent-90: rgba(255, 255, 255, 0.1);
+
+body {
+  background-color: $grey-logo;
+  font-family: $montserrat;
+}
+
+.navbar-default {
+  background-color: transparent;
+  @include border-radius(0);
+  border-width: 0;
+  @include box-shadow(0, 0, 0, 0, rgb(0, 0, 0));
+}
+
+// When is not mobile
+@media (min-width: 768px) {
+  // Navbar center-header
+  .navbar-nav {
+        float:none;
+        margin: 0 auto;
+        display: table;
+        table-layout: fixed;
+    }
+}
