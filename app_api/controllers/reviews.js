@@ -18,7 +18,7 @@ var getAuthor = function(req, res, callback) {
       sendJSONresponse(res, 404, err);
       return;
     }
-      callback(req, res, user.name);
+      callback(req, res, user.username);
     });
   } else {
     sendJSONresponse(res, 404, {
@@ -38,7 +38,7 @@ var sendJSONresponse = function(res, status, content) {
 /* POST a new review, providing a postid */
 /* /api/v1/posts/:postid/reviews */
 module.exports.reviewsCreate = function(req, res) {
-  getAuthor(req, res, function (req, res, userName) {
+  getAuthor(req, res, function (req, res, username) {
     if (req.params.postid) {
       Post
         .findById(req.params.postid)
@@ -48,7 +48,7 @@ module.exports.reviewsCreate = function(req, res) {
             if (err) {
               sendJSONresponse(res, 400, err);
             } else {
-              doAddReview(req, res, post, userName);
+              doAddReview(req, res, post, username);
             }
           }
       );
