@@ -14,27 +14,18 @@ body {
   -webkit-box-shadow: 0 0 0 0 black;
   box-shadow: 0 0 0 0 black; }
 
+.navbar-brand {
+  color: #92B74F !important; }
+
 @media (min-width: 768px) {
-  .navbar-nav {
-    float: none;
-    margin: 0 auto;
-    display: table;
-    table-layout: fixed; } }
+  .navbar-brand {
+    transform: translateX(-50%);
+    left: 50%;
+    position: absolute;
+    margin-left: 0px !important; } }
 
 nav ul li {
   background-color: transparent; }
-
-nav ul li::before {
-  content: "";
-  height: 0%;
-  width: 100%;
-  position: absolute;
-  background-color: #92B74F;
-  -webkit-transition: height 0.2s;
-  transition: height 0.2s; }
-
-nav ul li:hover::before {
-  height: 100%; }
 
 .header-background, .header-background-grey, .header-background-green, .header-background-img {
   background-repeat: no-repeat;
@@ -59,5 +50,26 @@ nav ul li:hover::before {
 .bg-green, .header-background-green {
   background-color: #92B74F; }
 
-.brand-text {
-  color: #92B74F; }
+@media (max-width: 768px) {
+  .bg-transition::before {
+    content: "";
+    height: 100%;
+    width: 0%;
+    position: absolute;
+    background-color: #92B74F;
+    -webkit-transition: width 0.2s;
+    transition: width 0.2s; }
+  .bg-transition:hover::before {
+    width: 100%; } }
+
+@media (min-width: 768px) {
+  .bg-transition::before {
+    content: "";
+    height: 0%;
+    width: 100%;
+    position: absolute;
+    background-color: #92B74F;
+    -webkit-transition: height 0.2s;
+    transition: height 0.2s; }
+  .bg-transition:hover::before {
+    height: 100%; } }

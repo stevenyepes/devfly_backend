@@ -1,65 +1,56 @@
-// Imports
+////// Imports
 @import 'mixin';
-
 // Google font imports
 @import 'https://fonts.googleapis.com/css?family=Montserrat|Raleway';
 
-// Fonts
+////// Fonts
 $montserrat: 'Montserrat', sans-serif;
 $raleway: 'Raleway', sans-serif;
 
+////// Colours
 // These are the logo colours
 $green-logo: #92B74F;
 $yellow-logo: #FEEF41;
 $grey-logo: #343434;
 $brown-logo: #866825;
-
-// Colours
+// Other colours
 $transparent-90: rgba(255, 255, 255, 0.1);
 
-// Body
+
+////// Body
 body {
   background-color: $grey-logo;
   font-family: $montserrat;
 }
 
-// Navbar
+////// Navbar
 .navbar-default {
   background-color: transparent;
   @include border-radius(0);
   border-width: 0;
   @include box-shadow(0, 0, 0, 0, rgb(0, 0, 0));
 }
-// When is not mobile
+.navbar-brand {
+  color: $green-logo !important;
+}
+// When is not mobile, put in center
 @media (min-width: 768px) {
-  // Navbar center-header
-  .navbar-nav {
-        float:none;
-        margin: 0 auto;
-        display: table;
-        table-layout: fixed;
-    }
+  .navbar-brand {
+    transform: translateX(-50%);
+    left: 50%;
+    position: absolute;
+    margin-left: 0px !important;
+  }
 }
 nav {
   ul {
     li {
       background-color: transparent;
     }
-    li::before {
-      content: "";
-      height: 0%;
-      width: 100%;
-      position: absolute;
-      background-color: $green-logo;
-      @include transition(height);
-    }
-    li:hover::before {
-      height: 100%;
-    }
   }
 }
 
-// Gigantic Header
+////// Gigantic Header
 .header-background {
   background-repeat: no-repeat;
 	background-position: 100% 50%;
@@ -87,7 +78,7 @@ nav {
   background-image: url("");
 }
 
-// Background colors
+////// Background colors
 .bg-grey {
   background-color: $grey-logo;
 }
@@ -95,7 +86,32 @@ nav {
   background-color: $green-logo;
 }
 
-// Brand
-.brand-text {
-  color: $green-logo;
+////// Background transition (transparent to color)
+// If mobile, the transition is right to left
+@media (max-width: 768px) {
+  .bg-transition::before {
+    content: "";
+    height: 100%;
+    width: 0%;
+    position: absolute;
+    background-color: $green-logo;
+    @include transition(width);
+  }
+  .bg-transition:hover::before {
+    width: 100%;
+  }
+}
+// If not mobile, transition is from top to bottom
+@media (min-width: 768px) {
+  .bg-transition::before {
+    content: "";
+    height: 0%;
+    width: 100%;
+    position: absolute;
+    background-color: $green-logo;
+    @include transition(height);
+  }
+  .bg-transition:hover::before {
+    height: 100%;
+  }
 }
