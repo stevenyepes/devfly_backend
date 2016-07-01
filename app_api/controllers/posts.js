@@ -42,7 +42,7 @@ module.exports.postsListAll = function (req, res) {
       sendJSONResponse(res, 404, err);
       return;
     }
-    sendJSONResponse(res, 404, posts);
+    sendJSONResponse(res, 200, posts);
   });
 
 };

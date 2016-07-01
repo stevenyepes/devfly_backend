@@ -13,14 +13,14 @@ var auth = jwt({
 });
 
 // posts
-router.get('/posts', auth,ctrlPosts.postsListAll);
+router.get('/posts', ctrlPosts.postsListAll);
 router.post('/posts', auth,ctrlPosts.postsCreate);
-router.get('/posts/:postid', auth,ctrlPosts.postsReadOne);
+router.get('/posts/:postid', ctrlPosts.postsReadOne);
 router.put('/posts/:postid', auth,ctrlPosts.postsUpdateOne);
 router.delete('/posts/:postid', auth,ctrlPosts.postsDeleteOne);
 // reviews
 router.post('/posts/:postid/reviews', auth,ctrlReviews.reviewsCreate);
-router.get('/posts/:postid/reviews/:reviewid',auth, ctrlReviews.reviewsReadOne);
+router.get('/posts/:postid/reviews/:reviewid', ctrlReviews.reviewsReadOne);
 router.put('/posts/:postid/reviews/:reviewid', auth,ctrlReviews.reviewsUpdateOne);
 router.delete('/posts/:postid/reviews/:reviewid', auth,ctrlReviews.reviewsDeleteOne);
 // Auth
