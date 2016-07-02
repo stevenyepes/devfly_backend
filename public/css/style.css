@@ -3,6 +3,27 @@ body {
   background-color: #343434;
   font-family: "Montserrat", sans-serif; }
 
+.gigantic-title, .gigantic-subtitle {
+  text-align: right;
+  font-family: "Montserrat", sans-serif;
+  font-size: 58px;
+  font-weight: bold;
+  color: #92B74F;
+  line-height: normal;
+  padding-top: 60px; }
+
+.gigantic-subtitle {
+  font-size: 34px;
+  color: #535353;
+  padding-top: 0px; }
+
+.button-square {
+  background-color: transparent;
+  padding: 8px 30px 8px 30px;
+  border-style: solid;
+  border-color: #535353;
+  float: right; }
+
 .navbar-default {
   background-color: transparent;
   -webkit-border-radius: 0;
@@ -27,9 +48,9 @@ body {
 nav ul li {
   background-color: transparent; }
 
-.header-background, .header-background-grey, .header-background-green, .header-background-img {
+.header-background, .header-background-grey, .header-background-green, .header-background-img, .header-background-img-bg {
   background-repeat: no-repeat;
-  background-position: 100% 50%;
+  background-position: center;
   position: fixed;
   width: 100%;
   height: 100vh;
@@ -42,7 +63,15 @@ nav ul li {
   background: transparent; }
 
 .header-background-img {
-  background-image: url(""); }
+  background-size: auto 100vh;
+  background-position: 0% 50%;
+  background-image: url("/svgs/tree.svg"); }
+
+.header-background-img-bg {
+  background-repeat: repeat-x;
+  background-image: url("/svgs/mountain.svg");
+  background-position: 100% 100%;
+  background-size: 43vw auto; }
 
 .bg-grey, .header-background-grey {
   background-color: #343434; }
@@ -86,3 +115,29 @@ nav ul li {
 
 .bc-transition:hover {
   border-width: 4px; }
+
+.cloud {
+  animation: cloud 15s linear infinite; }
+
+@keyframes cloud {
+  0% {
+    opacity: 0; }
+  45% {
+    opacity: 1; }
+  55% {
+    opacity: 1; }
+  100% {
+    transform: translateX(550px);
+    opacity: 0; } }
+
+.cloud-1 {
+  opacity: 0;
+  animation-delay: 0.0s; }
+
+.cloud-2 {
+  opacity: 0;
+  animation-delay: 4.0s; }
+
+.cloud-3 {
+  opacity: 0;
+  animation-delay: 7.0s; }

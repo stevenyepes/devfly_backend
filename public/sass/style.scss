@@ -15,12 +15,39 @@ $grey-logo: #343434;
 $brown-logo: #866825;
 // Other colours
 $transparent-90: rgba(255, 255, 255, 0.1);
+$grey-lower: #535353;
 
 
 ////// Body
 body {
   background-color: $grey-logo;
   font-family: $montserrat;
+}
+
+////// Texto
+.gigantic-title {
+  text-align: right;
+  font-family: $montserrat;
+  font-size: 58px;
+  font-weight: bold;
+  color: $green-logo;
+  line-height: normal;
+  padding-top: 60px;
+}
+.gigantic-subtitle {
+  @extend .gigantic-title;
+  font-size: 34px;
+  color: $grey-lower;
+  padding-top: 0px;
+}
+
+////// Buttons
+.button-square {
+  background-color: transparent;
+  padding: 8px 30px 8px 30px;
+  border-style: solid;
+  border-color: $grey-lower;
+  float:right;
 }
 
 ////// Navbar
@@ -53,7 +80,7 @@ nav {
 ////// Gigantic Header
 .header-background {
   background-repeat: no-repeat;
-	background-position: 100% 50%;
+  background-position: center;
 	position: fixed;
 	width: 100%;
 	height: 100vh;
@@ -75,7 +102,18 @@ nav {
 }
 .header-background-img {
   @extend .header-background;
-  background-image: url("");
+  background-size: auto 100vh;
+  background-position: 0% 50%;
+  background-image: url("/svgs/tree.svg");
+}
+.header-background-img-bg {
+  @extend .header-background;
+  background-repeat: repeat-x;;
+  background-image: url("/svgs/mountain.svg");
+  // X, Y
+  background-position: 100% 100%;
+  // width, height : ViewportWidth, ViewportHeight
+  background-size: 43vw auto;
 }
 
 ////// Background colors
@@ -115,7 +153,7 @@ nav {
     height: 100%;
   }
 }
-
+////// Border width transition
 .bc-transition {
   border-style: solid;
   border-width: 0px;
@@ -127,4 +165,37 @@ nav {
 }
 .bc-transition:hover {
   border-width: 4px;
+}
+
+////// Cloud animation
+// Used inside a svg
+.cloud {
+  animation: cloud 15s linear infinite;
+}
+@keyframes cloud {
+  0% {
+    opacity : 0;
+  }
+  45% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(550px);
+    opacity: 0;
+  }
+}
+.cloud-1{
+  opacity: 0;
+  animation-delay: 0.0s;
+}
+.cloud-2{
+  opacity: 0;
+  animation-delay: 4.0s;
+}
+.cloud-3{
+  opacity: 0;
+  animation-delay: 7.0s;
 }
