@@ -1,5 +1,6 @@
 ////// Imports
 @import 'mixin';
+@import "hacks";
 // Google font imports
 @import 'https://fonts.googleapis.com/css?family=Montserrat|Raleway';
 
@@ -15,7 +16,9 @@ $grey-logo: #343434;
 $brown-logo: #866825;
 // Other colours
 $transparent-90: rgba(255, 255, 255, 0.1);
-$grey-lower: #535353;
+$grey-lower: #606060;
+$grey-lowest: #8e8e8e;
+$green-logo-shadow: #6C8D44;
 
 
 ////// Body
@@ -23,6 +26,7 @@ body {
   background-color: $grey-logo;
   font-family: $montserrat;
 }
+
 
 ////// Texto
 .gigantic-title {
@@ -41,14 +45,56 @@ body {
   padding-top: 0px;
 }
 
+
 ////// Buttons
-.button-square {
+// Initial button value
+.button-preset {
+  @include hacks;
   background-color: transparent;
-  padding: 8px 30px 8px 30px;
+  padding: 7px 30px 8px 30px;
   border-style: solid;
+  border-width: 2px;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 1;
   border-color: $grey-lower;
-  float:right;
+  color: $grey-lower;
+  text-transform: uppercase;
+  @include transition(
+    color, border-color 0.1s ease-out
+    );
+  &:hover {
+    color: $grey-lowest;
+    border-color: $green-logo-shadow;
+  }
 }
+// Button with underline animation
+.button-center-underline {
+  @extend .button-preset;
+	position: relative;
+	overflow: hidden;
+  text-transform: uppercase;
+	&:before {
+		content: "";
+		position: absolute;
+		left: 50%;
+		right: 50%;
+		bottom: 0px;
+		background: $green-logo;
+		height: 3px;
+		@include transition(left 0.1s ease-out, right 0.1s ease-out);
+	}
+	&:hover,
+	&:focus,
+	&:active {
+		&:before {
+			left: 0;
+			right: 0;
+		}
+	}
+}
+
 
 ////// Navbar
 .navbar-default {
@@ -76,6 +122,7 @@ nav {
     }
   }
 }
+
 
 ////// Gigantic Header
 .header-background {
@@ -116,6 +163,7 @@ nav {
   background-size: 43vw auto;
 }
 
+
 ////// Background colors
 .bg-grey {
   background-color: $grey-logo;
@@ -123,6 +171,7 @@ nav {
 .bg-green {
   background-color: $green-logo;
 }
+
 
 ////// Background transition (transparent to color)
 // If mobile, the transition is right to left
@@ -153,6 +202,8 @@ nav {
     height: 100%;
   }
 }
+
+
 ////// Border width transition
 .bc-transition {
   border-style: solid;
@@ -166,6 +217,7 @@ nav {
 .bc-transition:hover {
   border-width: 4px;
 }
+
 
 ////// Cloud animation
 // Used inside a svg
@@ -198,4 +250,10 @@ nav {
 .cloud-3{
   opacity: 0;
   animation-delay: 7.0s;
+}
+
+
+////// Others
+.float-right {
+  float:right;
 }
