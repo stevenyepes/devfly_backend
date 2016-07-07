@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Post = mongoose.model('Post');
 var User = mongoose.model('User');
 
+
 var getAuthor = function(req, res, callback) {
   if (req.payload && req.payload.email) {
     User

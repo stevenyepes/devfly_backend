@@ -20,7 +20,7 @@ var userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    "default": "standard"
+    "default": "user"
   },
   createdOn: {
     type: Date,
@@ -51,5 +51,17 @@ userSchema.methods.generateJwt = function() {
     exp: parseInt(expiry.getTime()/1000),
   }, process.env.JWT_SECRET);
 };
+
+// Setting up roles to Users
+userSchema.plugin(require('mongoose-role'), {
+  roles: ['public', 'user', 'admin'],
+  accessLevels: {
+    'public': ['public', 'user', 'admin'],
+    'anon': ['public'],
+    'user': ['user', 'admin'],
+    'admin': ['admin']
+  }
+});
+
 
 mongoose.model('User', userSchema);
