@@ -9,6 +9,9 @@ var router = express.Router();
 /* Configure jwt module for routes */
 var jwt = require('express-jwt');
 
+// Just for testing
+var Post = mongoose.model('Post');
+
 var auth = jwt({
   secret: process.env.JWT_SECRET,
   userProperty: 'payload'
@@ -50,7 +53,6 @@ var hasAccess = function(accessLevel) {
 
       });
 
-
     } else {
       return res.json({
         success: false,
@@ -76,5 +78,24 @@ router.delete('/posts/:postid/reviews/:reviewid', auth,ctrlReviews.reviewsDelete
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 
+
+// Test router
+router.get('/image/:postid', function (req, res) {
+  Post
+  .findById(req.params.postid)
+  .select('image')
+  .exec(function(err,post) {
+    if(err){
+      console.log(err);
+    }else {
+      console.log(post);
+      res.contentType(post.image.contentType);
+      res.send(post.image.data);
+    }
+
+  });
+
+
+});
 
 module.exports = router;
