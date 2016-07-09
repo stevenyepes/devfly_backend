@@ -80,16 +80,18 @@ module.exports.postsCreate = function (req, res) {
 
 /* GET /api/v1/posts */
 module.exports.postsListAll = function (req, res) {
+  console.log('postsListAll');
   Post
   .find()
   .select('-image -content -reviews -rating -keywords -modified')
   .exec(function(err, posts) {
-    if(!posts) {
+    if(!posts || posts.length === 0) {
       utils.sendJSONResponse(res, 404, {
-        "message" : "Posts is empty"
+        "message" : "There is no post yet"
       });
       return;
     } else if (err) {
+      console.log('SALTO ERROR');
       utils.sendJSONResponse(res, 404, err);
       return;
     }

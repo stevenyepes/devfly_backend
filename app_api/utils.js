@@ -6,7 +6,7 @@ sendJSONResponse = function(res, status, content) {
   res.json(content);
 };
 
-module.exports.resizeImage = function(res,path, done){
+resizeImage = function(res,path, done) {
   lwip.open(path, function(err, image){
 
     // check err
@@ -15,7 +15,7 @@ module.exports.resizeImage = function(res,path, done){
       return;
     }
     // manipulate image:
-    image.scale(0.5, function(err, image){
+    image.crop(512,512, function(err, image){
       // check err
       if(err) {
         this.sendJSONResponse(res, 404, err);
@@ -42,3 +42,4 @@ module.exports.resizeImage = function(res,path, done){
 };
 
 module.exports.sendJSONResponse = sendJSONResponse;
+module.exports.resizeImage = resizeImage;

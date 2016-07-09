@@ -1,29 +1,45 @@
-var frisby = require('frisby');
-//var url = 'http://localhost:3000/api/v1/posts';
+var request = require('supertest');
+var app = require('../../app.js');
+var url = 'api/v1/';
 
-var url = 'http://devfly-devfly.rhcloud.com/api/v1/posts';
-frisby.create('Ensure response has proper JSON types in specified keys')
-  .get(url)
-  .expectStatus(200)
-  .expectHeaderContains('content-type', 'application/json')
-  .expectJSONTypes('0', {
-    title: String,
-    keywords: [String],
-    content: String,
-    category: String
-  })
-.toss();
+testAccount = {
+  username: 'admin',
+  password: 'admin',
+};
 
-/*frisby.create('Ensure response has proper JSON types in specified keys')
-  .addHeader('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Nzc1OWE1YzYzZWFkOTJhMThhNDQ4MGEiLCJlbWFpbCI6InN0ZXZlbkBnbWFpbC5jb20iLCJuYW1lIjoic3RldmVuIiwiZXhwIjoxNDY3OTMzNjA5LCJpYXQiOjE0NjczMjg4MDl9.4_aYljdDXPKfT26vd8ZRe1L2Sig9UinKDsyLwuCUke8')
-  .post(url,{
-    title: "testing unauthorize user",
-    keywords: "remove, spaces, white",
-    category: "test",
-    content: "hey there from testing"
+describe('GET /posts', function(){
+  it('respond with json and with and error', function(done){
+    request(app)
+      .get('/api/v1/posts')
+      .expect('Content-Type', /json/)
+      .expect(404)
+      .end(function(err, res) {
+        if (err) { throw err; }
+        //res.body.should.have.properties('message');
+        //res.body.should.
+        expect(res.body.message).not.toBeNull();
+        done();
+      });
 
-  })
-  .expectStatus(200)
-  .expectHeaderContains('content-type', 'application/json')
-.toss();
-*/
+
+  });
+});
+
+describe('Get ADMIN access_token', function() {
+    describe('Get a valid access_token in endpoint: /authenticate', function() {});
+    it('It should return an ADMIN access_token', function(done) {
+        request(app)
+        .post('/api/v1/login')
+        .set('Accept', 'application/json')
+        .send(testAccount)
+        .expect('Content-Type', /json/)
+        .expect(404)
+        .end(function(err, res) {
+            expect(res.body.message).not.toBeNull();
+            expect(res.body.message).toContain("Incorrect username");
+            done(err);
+        });
+
+
+    });
+});

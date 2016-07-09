@@ -1,0 +1,32 @@
+[
+  {
+    "title": "this is a testing post",
+    "keywords": "testing, post",
+    "content": "Testing if all works",
+    "category": "test"
+  },
+  {
+    "title": "this is a testing post2",
+    "keywords": "testing, post",
+    "content": "Testing if all works2",
+    "category": "test"
+  },
+  {
+    "title": "this is a testing post3",
+    "keywords": "testing, post",
+    "content": "Testing if all works3",
+    "category": "test"
+  },
+  {
+    "title": "this is a testing post4",
+    "keywords": "testing, post",
+    "content": "Testing if all works4",
+    "category": "test"
+  },
+  {
+    "title": "this is a testing post5",
+    "keywords": "testing, post",
+    "content": "Testing if all works5",
+    "category": "test"
+  }
+]
