@@ -18,25 +18,25 @@ $brown-logo: #866825;
 $transparent-90: rgba(255, 255, 255, 0.1);
 $grey-lower: #606060;
 $grey-lowest: #8e8e8e;
+$grey-hard: #2F2F2F;
 $green-logo-shadow: #6C8D44;
+$white: #f6f6f6;
 
 
 ////// Body
 body {
   background-color: $grey-logo;
   font-family: $montserrat;
+  margin: 0;
 }
 
-
-////// Texto
+////// Text
 .gigantic-title {
-  text-align: right;
   font-family: $montserrat;
   font-size: 58px;
   font-weight: bold;
   color: $green-logo;
   line-height: normal;
-  padding-top: 60px;
 }
 .gigantic-subtitle {
   @extend .gigantic-title;
@@ -44,6 +44,16 @@ body {
   color: $grey-lower;
   padding-top: 0px;
 }
+p {
+  // This is for clear the gaps between divs with p
+  margin: 0px;
+}
+a {
+  text-decoration: none;
+}
+
+
+////// Input
 
 
 ////// Buttons
@@ -96,35 +106,7 @@ body {
 }
 
 
-////// Navbar
-.navbar-default {
-  background-color: transparent;
-  @include border-radius(0);
-  border-width: 0;
-  @include box-shadow(0, 0, 0, 0, rgb(0, 0, 0));
-}
-.navbar-brand {
-  color: $green-logo !important;
-}
-// When is not mobile, put in center
-@media (min-width: 768px) {
-  .navbar-brand {
-    transform: translateX(-50%);
-    left: 50%;
-    position: absolute;
-    margin-left: 0px !important;
-  }
-}
-nav {
-  ul {
-    li {
-      background-color: transparent;
-    }
-  }
-}
-
-
-////// Gigantic Header
+////// Header
 .header-background {
   background-repeat: no-repeat;
   background-position: center;
@@ -134,10 +116,14 @@ nav {
 	top:0;
   left:0;
   z-index: -1;
+  // width, height : ViewportWidth, ViewportHeight
+  background-size: auto 100vh;
 }
 .header-content {
   height: 100vh;
   background:transparent;
+  text-align: right;
+  //padding: 0px 40px 0px 40px;
 }
 .header-background-grey {
   @extend .header-background;
@@ -149,18 +135,61 @@ nav {
 }
 .header-background-img {
   @extend .header-background;
-  background-size: auto 100vh;
   background-position: 0% 50%;
   background-image: url("/svgs/tree.svg");
 }
 .header-background-img-bg {
   @extend .header-background;
-  background-repeat: repeat-x;;
+  background-repeat: repeat-x;
   background-image: url("/svgs/mountain.svg");
   // X, Y
-  background-position: 100% 100%;
-  // width, height : ViewportWidth, ViewportHeight
-  background-size: 43vw auto;
+  background-position: 0 100%;
+}
+
+
+////// Navbar
+.navbar {
+  height: 65px;
+  width: 100%;
+  z-index: 1;
+  background-color: $grey-hard;
+  cursor: pointer;
+}
+.navbar-fixed {
+  top: 0px;
+  position: fixed;
+}
+.navbar-parent {
+  height: 65px;
+}
+.navbar-logo {
+  display: block;
+  height: 65px;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  fill: $green-logo;
+}
+.navbar-clickable {
+  @extend .navbar;
+  position: absolute;
+  background-color: transparent;
+}
+.navbar-side {
+  @include transform(translateZ(0));
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  width: 0px;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: $grey-hard;
+  @include transition(width 0.3s ease);
+}
+.navbar-side-open {
+  width: 280px;
 }
 
 
@@ -171,6 +200,9 @@ nav {
 .bg-green {
   background-color: $green-logo;
 }
+.bg-white {
+  background-color: $white;
+}
 
 
 ////// Background transition (transparent to color)
@@ -178,14 +210,19 @@ nav {
 @media (max-width: 768px) {
   .bg-transition::before {
     content: "";
-    height: 100%;
-    width: 0%;
     position: absolute;
-    background-color: $green-logo;
-    @include transition(width);
+    z-index: -1;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+    background: $green-logo;
+    transform: scaleY(0);
+    transform-origin: 50% 0;
+    @include transition(transform);
   }
   .bg-transition:hover::before {
-    width: 100%;
+    transform: scaleY(1);
   }
 }
 // If not mobile, transition is from top to bottom
@@ -219,41 +256,19 @@ nav {
 }
 
 
-////// Cloud animation
-// Used inside a svg
-.cloud {
-  animation: cloud 15s linear infinite;
-}
-@keyframes cloud {
-  0% {
-    opacity : 0;
-  }
-  45% {
-    opacity: 1;
-  }
-  55% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(550px);
-    opacity: 0;
-  }
-}
-.cloud-1{
-  opacity: 0;
-  animation-delay: 0.0s;
-}
-.cloud-2{
-  opacity: 0;
-  animation-delay: 4.0s;
-}
-.cloud-3{
-  opacity: 0;
-  animation-delay: 7.0s;
-}
-
-
 ////// Others
 .float-right {
   float:right;
+}
+
+.allign-right {
+  text-align: right;
+}
+
+.padding-60 {
+  padding-top: 60px;
+}
+
+.padding-20 {
+  padding-top: 20px;
 }
