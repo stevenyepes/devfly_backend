@@ -1,31 +1,55 @@
 var request = require('supertest');
 var app = require('../../app.js');
-var url = 'api/v1/';
+var db = require('../utils/db.js');
 
-testAccount = {
-  username: 'admin',
-  password: 'admin',
-};
 
-describe('GET /posts', function(){
-  it('respond with json and with and error', function(done){
+describe('GET /posts on bd with data', function(){
+  beforeAll(function(done) {
+    db.setupDatabase(done);
+  });
+
+  afterAll(function(done){
+    db.reset(done);
+  });
+
+  it('respond with posts', function(done){
     request(app)
-      .get('/api/v1/posts')
+      .get('/api/v1/posts/')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .end(function(err, res) {
+        if (err) { throw err; }
+        console.log(res.body[0]);
+        expect(res.body[0]).not.toBeUndefined();
+        expect(res.body[0].title).not.toBeUndefined();
+        expect(res.body[0].category).not.toBeUndefined();
+        expect(res.body[0].author).not.toBeUndefined();
+        expect(res.body[0].date).not.toBeUndefined();
+        expect(res.body[0].views).not.toBeUndefined();
+        done();
+      });
+  });
+
+});
+
+describe('GET /posts on bd without data', function(){
+
+  it('respond with posts', function(done){
+    request(app)
+      .get('/api/v1/posts/')
       .expect('Content-Type', /json/)
       .expect(404)
       .end(function(err, res) {
         if (err) { throw err; }
-        //res.body.should.have.properties('message');
-        //res.body.should.
-        expect(res.body.message).not.toBeNull();
+        console.log(res.body);
+        expect(res.body.message).toBe("There is no post yet");
         done();
       });
-
-
   });
+
 });
 
-describe('Get ADMIN access_token', function() {
+/*describe('Get ADMIN access_token', function() {
     describe('Get a valid access_token in endpoint: /authenticate', function() {});
     it('It should return an ADMIN access_token', function(done) {
         request(app)
@@ -43,3 +67,4 @@ describe('Get ADMIN access_token', function() {
 
     });
 });
+*/

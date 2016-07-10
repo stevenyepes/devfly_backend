@@ -80,7 +80,6 @@ module.exports.postsCreate = function (req, res) {
 
 /* GET /api/v1/posts */
 module.exports.postsListAll = function (req, res) {
-  console.log('postsListAll');
   Post
   .find()
   .select('-image -content -reviews -rating -keywords -modified')
