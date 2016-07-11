@@ -8,8 +8,8 @@
   },
   "main": "./bin/www",
   "engines": {
-    "node": "4.4.x",
-    "npm": "2.15.x"
+    "node": ">=4.4.4",
+    "npm": ">=2.15.0"
   },
   "dependencies": {
     "async": "^2.0.0-rc.6",
