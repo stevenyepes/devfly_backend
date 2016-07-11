@@ -1,21 +1,26 @@
 @import 'https://fonts.googleapis.com/css?family=Montserrat|Raleway';
 body {
   background-color: #343434;
-  font-family: "Montserrat", sans-serif; }
+  font-family: "Montserrat", sans-serif;
+  margin: 0; }
 
 .gigantic-title, .gigantic-subtitle {
-  text-align: right;
   font-family: "Montserrat", sans-serif;
   font-size: 58px;
   font-weight: bold;
   color: #92B74F;
-  line-height: normal;
-  padding-top: 60px; }
+  line-height: normal; }
 
 .gigantic-subtitle {
   font-size: 34px;
   color: #606060;
   padding-top: 0px; }
+
+p {
+  margin: 0px; }
+
+a {
+  text-decoration: none; }
 
 .button-preset, .button-center-underline {
   display: inline-block;
@@ -64,30 +69,6 @@ body {
     left: 0;
     right: 0; }
 
-.navbar-default {
-  background-color: transparent;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  -ms-border-radius: 0;
-  border-radius: 0;
-  border-width: 0;
-  -moz-box-shadow: 0 0 0 0 black;
-  -webkit-box-shadow: 0 0 0 0 black;
-  box-shadow: 0 0 0 0 black; }
-
-.navbar-brand {
-  color: #92B74F !important; }
-
-@media (min-width: 768px) {
-  .navbar-brand {
-    transform: translateX(-50%);
-    left: 50%;
-    position: absolute;
-    margin-left: 0px !important; } }
-
-nav ul li {
-  background-color: transparent; }
-
 .header-background, .header-background-grey, .header-background-green, .header-background-img, .header-background-img-bg {
   background-repeat: no-repeat;
   background-position: center;
@@ -96,22 +77,68 @@ nav ul li {
   height: 100vh;
   top: 0;
   left: 0;
-  z-index: -1; }
+  z-index: -1;
+  background-size: auto 100vh; }
 
 .header-content {
   height: 100vh;
-  background: transparent; }
+  background: transparent;
+  text-align: right; }
 
 .header-background-img {
-  background-size: auto 100vh;
   background-position: 0% 50%;
   background-image: url("/svgs/tree.svg"); }
 
 .header-background-img-bg {
   background-repeat: repeat-x;
   background-image: url("/svgs/mountain.svg");
-  background-position: 100% 100%;
-  background-size: 43vw auto; }
+  background-position: 0 100%; }
+
+.navbar, .navbar-clickable {
+  height: 65px;
+  width: 100%;
+  z-index: 1;
+  background-color: #2F2F2F;
+  cursor: pointer; }
+
+.navbar-fixed {
+  top: 0px;
+  position: fixed; }
+
+.navbar-parent {
+  height: 65px; }
+
+.navbar-logo {
+  display: block;
+  height: 65px;
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  fill: #92B74F; }
+
+.navbar-clickable {
+  position: absolute;
+  background-color: transparent; }
+
+.navbar-side {
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  width: 0px;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #2F2F2F;
+  -webkit-transition: width 0.3s ease;
+  transition: width 0.3s ease; }
+
+.navbar-side-open {
+  width: 280px; }
 
 .bg-grey, .header-background-grey {
   background-color: #343434; }
@@ -119,17 +146,25 @@ nav ul li {
 .bg-green, .header-background-green {
   background-color: #92B74F; }
 
+.bg-white {
+  background-color: #f6f6f6; }
+
 @media (max-width: 768px) {
   .bg-transition::before {
     content: "";
-    height: 100%;
-    width: 0%;
     position: absolute;
-    background-color: #92B74F;
-    -webkit-transition: width 0.2s;
-    transition: width 0.2s; }
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #92B74F;
+    transform: scaleY(0);
+    transform-origin: 50% 0;
+    -webkit-transition: transform 0.2s;
+    transition: transform 0.2s; }
   .bg-transition:hover::before {
-    width: 100%; } }
+    transform: scaleY(1); } }
 
 @media (min-width: 768px) {
   .bg-transition::before {
@@ -156,31 +191,14 @@ nav ul li {
 .bc-transition:hover {
   border-width: 4px; }
 
-.cloud {
-  animation: cloud 15s linear infinite; }
-
-@keyframes cloud {
-  0% {
-    opacity: 0; }
-  45% {
-    opacity: 1; }
-  55% {
-    opacity: 1; }
-  100% {
-    transform: translateX(550px);
-    opacity: 0; } }
-
-.cloud-1 {
-  opacity: 0;
-  animation-delay: 0.0s; }
-
-.cloud-2 {
-  opacity: 0;
-  animation-delay: 4.0s; }
-
-.cloud-3 {
-  opacity: 0;
-  animation-delay: 7.0s; }
-
 .float-right {
   float: right; }
+
+.allign-right {
+  text-align: right; }
+
+.padding-60 {
+  padding-top: 60px; }
+
+.padding-20 {
+  padding-top: 20px; }
