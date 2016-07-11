@@ -3,6 +3,12 @@ var Post = mongoose.model('Post');
 var User = mongoose.model('User');
 var utils = require('../utils.js');
 
+var options = {
+  width : 512,
+  height: 512,
+  path: ""
+};
+
 var getAuthor = function(req, res, callback) {
   if (req.payload && req.payload.email) {
     User
@@ -38,7 +44,8 @@ module.exports.postsCreate = function (req, res) {
       return;
     }
     if(req.body.image){
-      utils.resizeImage(res,req.body.image,function(buffer, contentType){
+      options.path = req.body.image;
+      utils.resizeImage(res,options,function(buffer, contentType){
         Post.create({
           title: req.body.title,
           author: username,
@@ -143,8 +150,8 @@ module.exports.postsUpdateOne = function(req, res) {
   }
 
   if(req.body.image){
-
-    utils.resizeImage(res,req.body.image,function (buffer, contentType) {
+    options.path = req.body.image;
+    utils.resizeImage(res,options,function (buffer, contentType) {
       Post
         .findById(req.params.postid)
         .select('-reviews -rating -views -date')

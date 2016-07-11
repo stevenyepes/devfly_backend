@@ -1,43 +1,32 @@
-var lwip = require('lwip');
 var fileType = require('file-type');
+var sharp = require('sharp');
 
 sendJSONResponse = function(res, status, content) {
   res.status(status);
   res.json(content);
 };
 
-resizeImage = function(res,path, done) {
-  lwip.open(path, function(err, image){
+resizeImage = function(res,options, done) {
 
-    // check err
-    if(err) {
-      this.sendJSONResponse(res, 404, err);
-      return;
-    }
-    // manipulate image:
-    image.crop(512,512, function(err, image){
-      // check err
-      if(err) {
-        this.sendJSONResponse(res, 404, err);
+  sharp(options.path)
+    .resize(options.width, options.height)
+    .background({r: 0, g: 0, b: 0, a: 0})
+    .embed()
+    .toFormat(sharp.format.webp)
+    .toBuffer(function(err, outputBuffer) {
+      if (err) {
+        sendJSONResponse(res, 404, {
+          message: "Can't open the image, be sure to send a valid type of image"
+        });
         return;
       }
-      // encode to jpeg and get a buffer object:
-      image.toBuffer('jpg', function(err, buffer){
-
-        // check err...
-        if(err){
-          this.sendJSONResponse(res, 404, err);
-          return;
-        }
-        // send the buffer and mimetype
-        var contentType = fileType(buffer).mime;
-        done(buffer, contentType);
-      });
+      // outputBuffer contains WebP image data of a 512 pixels wide and 512 pixels high
+      // containing a scaled version, embedded on a transparent canvas, of input image
+      // send the buffer and mimetype
+      var contentType = fileType(outputBuffer).mime;
+      done(outputBuffer, contentType);
 
     });
-
-  });
-
 
 };
 

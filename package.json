@@ -21,14 +21,14 @@
     "express-jwt": "^3.4.0",
     "file-type": "^3.8.0",
     "jsonwebtoken": "^7.0.1",
-    "lwip": "0.0.9",
     "mongoose": "^4.5.2",
     "mongoose-role": "^1.2.0",
     "morgan": "~1.7.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "pug": "^2.0.0-beta3",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "sharp": "^0.15.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
