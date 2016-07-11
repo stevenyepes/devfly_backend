@@ -8,8 +8,8 @@
   },
   "main": "./bin/www",
   "engines": {
-    "node": ">=4.4.4",
-    "npm": ">=2.15.0"
+    "node": "4.4.x",
+    "npm": "2.15.x"
   },
   "dependencies": {
     "async": "^2.0.0-rc.6",
@@ -27,7 +27,8 @@
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "pug": "^2.0.0-beta3",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "sharp": "^0.15.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

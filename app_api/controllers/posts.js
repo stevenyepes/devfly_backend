@@ -97,7 +97,6 @@ module.exports.postsListAll = function (req, res) {
       });
       return;
     } else if (err) {
-      console.log('SALTO ERROR');
       utils.sendJSONResponse(res, 404, err);
       return;
     }
