@@ -18,6 +18,10 @@ resizeImage = function(res,options, done) {
       image.resize(options.width, options.height)            // resize
            .quality(60)                 // set JPEG quality
            .getBuffer( Jimp.MIME_JPEG, function(err,data){
+             if(err) {
+               sendJSONResponse(res, 404, err);
+               return;
+             }
              var contentType = fileType(data).mime;
              done(data, contentType);
            } );
