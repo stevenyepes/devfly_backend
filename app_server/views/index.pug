@@ -1,79 +1,82 @@
-extends layout
+include layout.pug
 
-block content
+body
+  include navbar.pug
 
 
-  //- Gigantic header background
-  .header-background-img-bg
-  .header-background-img
-  //- What is inside the gigantic header background
-  .header-content
+  .header
+    .header-parallax
+  .content
     .container
-      .padding-60
-      .padding-60
-      .gigantic-title Devadasdasd asdasd
-        .gigantic-subtitle Somethingngngng!
+      .padding
+      .row
+        .col-xs-0.col-sm-0.col-lg-1
+        .col-xs-12.col-sm-6.col-lg-5.allign-right
+          p.gigantic-title ¡Registrate ahora!
+          br
+          p.gigantic-subtitle Empieza a disfrutar de todos nuestros beneficios, incluidos beneficios sexuales por parte de nuestro experto en back-end
 
-  //- Used as wraper, so the content won't jump when the fixed navbar comes!
-  .navbar-parent
-    //- Navbar
-    .navbar#navbar
-      //- SVG logo
-      .navbar-clickable
-      object(data="/svgs/Dev.svg", type="image/svg+xml")#nav-devfly.navbar-logo
+        .col-xs-12.col-sm-6.col-lg-5.allign-left
+          form
+            input(type="text", placeholder="Nombre", class="input")
+            input(type="email", placeholder="Correo Electronico", class="input")
+            input(type="password", placeholder="Contraseña", class="input")
+            br
+            br
+            center
+              button(type="submit") Registrarse
+        .col-xs-0.col-sm-0.col-lg-1
 
-  .navbar-side
-    p something
+  .container.styled-content
+    p Algo
+    br
+    br
+    br
+    p asd
+    p Algo
+    br
+    br
+    br
+    p asd
+    p Algo
+    br
+    br
+    br
+    p asd
+    p Algo
+    br
+    br
+    br
+    p asd
+    p Algo
+    br
+    br
+    br
+    p asd
+    p Algo
+    br
+    br
+    br
+    p asd
+    p Algo
+    br
+    br
+    br
+    p asd
+    p Algo
+    br
+    br
+    br
+    p asd
+    p Algo
+    br
+    br
+    br
+    p asd
+    p Algo
+    br
+    br
+    br
+    p asd
 
-  .bg-white#body-when-navbar
-    .container
-      p Algo
-      br
-      br
-      br
-      p asd
-      p Algo
-      br
-      br
-      br
-      p asd
-      p Algo
-      br
-      br
-      br
-      p asd
-      p Algo
-      br
-      br
-      br
-      p asd
-      p Algo
-      br
-      br
-      br
-      p asd
-      p Algo
-      br
-      br
-      br
-      p asd
-      p Algo
-      br
-      br
-      br
-      p asd
-      p Algo
-      br
-      br
-      br
-      p asd
-      p Algo
-      br
-      br
-      br
-      p asd
-      p Algo
-      br
-      br
-      br
-      p asd
+  include scripts.pug

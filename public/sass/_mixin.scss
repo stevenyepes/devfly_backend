@@ -13,6 +13,13 @@
           box-shadow: $width $height $blur $radius $color;
 }
 
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}
+}
+
 @mixin flexbox() {
   display: -webkit-box;
   display: -moz-box;
@@ -81,13 +88,6 @@
   -moz-text-shadow:$top $left $blur $colour;
   -o-text-shadow:$top $left $blur $colour;
   text-shadow:$top $left $blur $colour;
-}
-
-
-@mixin box-shadow($top: 3px, $left: 3px, $blur: 4px, $colour: #444, $inset:"") {
-  -webkit-box-shadow: #{$inset} $top $left $blur $colour;
-  -moz-box-shadow:  #{$inset} $top $left $blur $colour;
-  box-shadow: #{$inset} $top $left $blur $colour;
 }
 
 @mixin rounded-corners($tl : 4px, $tr : 4px, $br: 4px, $bl: 4px) {

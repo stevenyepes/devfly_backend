@@ -9,39 +9,46 @@ $montserrat: 'Montserrat', sans-serif;
 $raleway: 'Raleway', sans-serif;
 
 ////// Colours
-// These are the logo colours
 $green-logo: #92B74F;
 $yellow-logo: #FEEF41;
 $grey-logo: #343434;
 $brown-logo: #866825;
-// Other colours
 $transparent-90: rgba(255, 255, 255, 0.1);
 $grey-lower: #606060;
 $grey-lowest: #8e8e8e;
 $grey-hard: #2F2F2F;
 $green-logo-shadow: #6C8D44;
 $white: #f6f6f6;
-
+$purple: #6A3089;
+$purple-low: #8E78C9;
+$purple-lowest: #BFA7DB;
+$lila: #EFE3F3;
 
 ////// Body
 body {
-  background-color: $grey-logo;
+  background-color: $white;
   font-family: $montserrat;
   margin: 0;
+}
+.styled-content {
+  position: relative;
+  @include border-radius(4px);
+  background-color: white;
+  top: -20vh;
+  @include box-shadow(0px, 0px, 30px, 0px, rgba(0, 0, 0, 0.3));
 }
 
 ////// Text
 .gigantic-title {
-  font-family: $montserrat;
-  font-size: 58px;
+  font-size: 42px;
   font-weight: bold;
-  color: $green-logo;
+  color: $purple;
   line-height: normal;
 }
 .gigantic-subtitle {
   @extend .gigantic-title;
-  font-size: 34px;
-  color: $grey-lower;
+  font-size: 21px;
+  color: $purple-low;
   padding-top: 0px;
 }
 p {
@@ -51,224 +58,161 @@ p {
 a {
   text-decoration: none;
 }
+.allign-left {
+  text-align: left;
+}
+.allign-right {
+  text-align: right;
+}
+@media (max-width: 768px) {
+  .allign-left {
+    text-align: center;
+  }
+  .allign-right {
+    text-align: center;
+  }
+  .gigantic-title {
+    font-size: 30px;
+  }
+  .gigantic-subtitle {
+    font-size: 18px;
+  }
+}
 
 
 ////// Input
-
-
-////// Buttons
-// Initial button value
-.button-preset {
-  @include hacks;
+input {
+  display: block;
+  z-index: 1;
+  margin: 0;
+  width: 100%;
+  font-size: 18px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+  border: 0;
+  border-bottom: 1px solid $purple-low;
   background-color: transparent;
-  padding: 7px 30px 8px 30px;
-  border-style: solid;
-  border-width: 2px;
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
-  border-bottom: 1;
-  border-color: $grey-lower;
-  color: $grey-lower;
-  text-transform: uppercase;
-  @include transition(
-    color, border-color 0.1s ease-out
-    );
-  &:hover {
-    color: $grey-lowest;
-    border-color: $green-logo-shadow;
+  color: $purple;
+  padding-top: 20px;
+
+  &:focus {
+    outline: none;
+    margin-bottom: -2px;
+    border-bottom: 3px solid $purple;
   }
 }
-// Button with underline animation
-.button-center-underline {
-  @extend .button-preset;
-	position: relative;
-	overflow: hidden;
+@include placeholder {
+  font-family: $raleway;
+  color: $purple-low;
+  @include transition(color 0.4s);
+}
+
+////// Buttons
+button {
+  padding: 5px 20px 5px 20px;
   text-transform: uppercase;
-	&:before {
-		content: "";
-		position: absolute;
-		left: 50%;
-		right: 50%;
-		bottom: 0px;
-		background: $green-logo;
-		height: 3px;
-		@include transition(left 0.1s ease-out, right 0.1s ease-out);
-	}
-	&:hover,
-	&:focus,
-	&:active {
-		&:before {
-			left: 0;
-			right: 0;
-		}
-	}
+  background-color: transparent;
+  color: $purple-low;
+  border: 1px solid $purple-low;
+  @include transition(color 0.4s);
+
+  &:hover {
+    color: $purple;
+    border: 3px solid $purple;
+    margin-top: -2px;
+    margin-bottom: -2px;
+  }
+}
+
+////// Navigation
+.navbar {
+  z-index: 5;
+  position: fixed;
+  width: 100%;
+  height: 100px;
+  background-color: transparent;
+  display: inline-block;
+  @include transition(height 0.4s, background-color 0.4s, border 0.4s);
+  @include transform(translateZ(0));
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  li a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: 40px 20px 40px 20px;
+    color: $purple;
+    text-transform: uppercase;
+    @include transition(padding 0.4s, color 0.2s);
+
+    &:hover {
+      color: $purple-low;
+    }
+  }
+
+  .left {
+    float: left;
+  }
+  .right {
+    float: right;
+  }
+
+  .brand {
+    font-weight: bold;
+  }
+}
+.navbar-small {
+  height: 60px;
+  background-color: white;
+  @include box-shadow(0,2px,25px,-1px, rgba(0, 0, 0, 0.66));
+  border: 4px solid $purple;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+
+  li a {
+    padding: 20px 20px 20px 20px;
+  }
 }
 
 
 ////// Header
-.header-background {
-  background-repeat: no-repeat;
-  background-position: center;
-	position: fixed;
-	width: 100%;
-	height: 100vh;
-	top:0;
-  left:0;
-  z-index: -1;
-  // width, height : ViewportWidth, ViewportHeight
-  background-size: auto 100vh;
-}
-.header-content {
-  height: 100vh;
-  background:transparent;
-  text-align: right;
-  //padding: 0px 40px 0px 40px;
-}
-.header-background-grey {
-  @extend .header-background;
-  @extend .bg-grey;
-}
-.header-background-green {
-  @extend .header-background;
-  @extend .bg-green;
-}
-.header-background-img {
-  @extend .header-background;
-  background-position: 0% 50%;
-  background-image: url("/svgs/tree.svg");
-}
-.header-background-img-bg {
-  @extend .header-background;
-  background-repeat: repeat-x;
-  background-image: url("/svgs/mountain.svg");
-  // X, Y
-  background-position: 0 100%;
-}
-
-
-////// Navbar
-.navbar {
-  height: 65px;
+.header {
+  z-index: -2;
+  position: relative;
   width: 100%;
-  z-index: 1;
-  background-color: $grey-hard;
-  cursor: pointer;
+  height: 100vh;
+  //background-color: $lila;
 }
-.navbar-fixed {
-  top: 0px;
-  position: fixed;
-}
-.navbar-parent {
-  height: 65px;
-}
-.navbar-logo {
-  display: block;
-  height: 65px;
-  width: auto;
-  margin-left: auto;
-  margin-right: auto;
-  fill: $green-logo;
-}
-.navbar-clickable {
-  @extend .navbar;
+.content {
   position: absolute;
-  background-color: transparent;
-}
-.navbar-side {
-  @include transform(translateZ(0));
-  position: fixed;
-  z-index: 2;
+  z-index: 1;
   top: 0;
-  right: 0;
-  width: 0px;
+  left: 0;
   height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  background-color: $grey-hard;
-  @include transition(width 0.3s ease);
-}
-.navbar-side-open {
-  width: 280px;
+  width: 100%;
 }
 
-
-////// Background colors
-.bg-grey {
-  background-color: $grey-logo;
-}
-.bg-green {
-  background-color: $green-logo;
-}
-.bg-white {
-  background-color: $white;
+.padding {
+  padding-top: 20vh;
 }
 
-
-////// Background transition (transparent to color)
-// If mobile, the transition is right to left
-@media (max-width: 768px) {
-  .bg-transition::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-    background: $green-logo;
-    transform: scaleY(0);
-    transform-origin: 50% 0;
-    @include transition(transform);
-  }
-  .bg-transition:hover::before {
-    transform: scaleY(1);
-  }
-}
-// If not mobile, transition is from top to bottom
-@media (min-width: 768px) {
-  .bg-transition::before {
-    content: "";
-    height: 0%;
-    width: 100%;
-    position: absolute;
-    background-color: $green-logo;
-    @include transition(height);
-  }
-  .bg-transition:hover::before {
-    height: 100%;
-  }
-}
-
-
-////// Border width transition
-.bc-transition {
-  border-style: solid;
-  border-width: 0px;
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
-  border-color: $green-logo ;
-  @include transition(border-width 0.1s linear);
-}
-.bc-transition:hover {
-  border-width: 4px;
-}
-
-
-////// Others
-.float-right {
-  float:right;
-}
-
-.allign-right {
-  text-align: right;
-}
-
-.padding-60 {
-  padding-top: 60px;
-}
-
-.padding-20 {
-  padding-top: 20px;
+.header-parallax {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: url("/svgs/tree.svg");
+  background-repeat: no-repeat;
+  background-position: 35% 50%;
+  background-size: auto 100vh;
 }
