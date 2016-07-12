@@ -20,6 +20,7 @@
     "express": "~4.13.4",
     "express-jwt": "^3.4.0",
     "file-type": "^3.8.0",
+    "jimp": "^0.2.24",
     "jsonwebtoken": "^7.0.1",
     "mongoose": "^4.5.2",
     "mongoose-role": "^1.2.0",

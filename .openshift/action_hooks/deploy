@@ -2,5 +2,3 @@
 
 HOME=$HOME/app-root/runtime
 cd ~/repo
-npm install node-gyp
-npm install sharp
