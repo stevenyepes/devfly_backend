@@ -132,6 +132,34 @@ if (req.params && req.params.postid) {
     }
 };
 
+/* GET /api/v1/posts/:category */
+module.exports.postsByCategory = function (req, res) {
+if (req.params && req.params.category) {
+  Post
+  .find({category: req.params.category})
+  .select('-image')
+  .exec(function(err, post) {
+
+    if (!post || post.length === 0) {
+     utils.sendJSONResponse(res, 404, {
+       "message": "There is no post in this category"
+     });
+     return;
+
+    } else if (err) {
+
+      utils.sendJSONResponse(res, 404, err);
+      return;
+    }
+      utils.sendJSONResponse(res, 200, post);
+    });
+  } else {
+      utils.sendJSONResponse(res, 404, {
+        "message": "No post id in request"
+      });
+    }
+};
+
 /* PUT /api/v1/posts/:postid */
 module.exports.postsUpdateOne = function(req, res) {
   if (!req.params.postid) {

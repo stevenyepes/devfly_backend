@@ -67,6 +67,7 @@ var hasAccess = function(accessLevel) {
 router.get('/posts', ctrlPosts.postsListAll);
 router.post('/posts', auth, hasAccess('admin'),ctrlPosts.postsCreate);
 router.get('/posts/:postid', ctrlPosts.postsReadOne);
+router.get('/posts/category/:category', ctrlPosts.postsByCategory);
 router.put('/posts/:postid', auth,ctrlPosts.postsUpdateOne);
 router.delete('/posts/:postid', auth,ctrlPosts.postsDeleteOne);
 // reviews
