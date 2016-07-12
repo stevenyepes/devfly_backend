@@ -1,5 +1,4 @@
 var fileType = require('file-type');
-var sharp = require('sharp');
 var Jimp = require('jimp')
 sendJSONResponse = function(res, status, content) {
   res.status(status);
