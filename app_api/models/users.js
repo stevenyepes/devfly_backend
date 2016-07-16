@@ -7,7 +7,7 @@ var userSchema = new mongoose.Schema({
   username: {
     type: String,
     unique: true,
-    required: true
+    trim: true
   },
   email: {
     type: String,
@@ -20,11 +20,16 @@ var userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    "default": "user"
+    "default": "user",
+    trim: true
   },
   createdOn: {
     type: Date,
     "default": Date.now
+  },
+  google:{
+    id           : String,
+    token        : String,
   },
   hash: String,
   salt: String
@@ -47,7 +52,7 @@ userSchema.methods.generateJwt = function() {
   return jwt.sign({
     _id: this.id,
     email: this.email,
-    name: this.name,
+    username: this.username,
     exp: parseInt(expiry.getTime()/1000),
   }, process.env.JWT_SECRET);
 };

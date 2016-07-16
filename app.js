@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 require('./app_api/models/db');
+// initialize passport config for local strategy
 require('./app_api/config/passport');
 // Routes for app_server
 var routes = require('./app_server/routes/index');
@@ -26,6 +27,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_client')));
+
+
 app.use(passport.initialize());
 
 

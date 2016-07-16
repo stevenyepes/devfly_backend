@@ -26,6 +26,8 @@
     "mongoose-role": "^1.2.0",
     "morgan": "~1.7.0",
     "passport": "^0.3.2",
+    "passport-google": "^0.3.0",
+    "passport-google-oauth20": "^1.0.0",
     "passport-local": "^1.0.0",
     "pug": "^2.0.0-beta3",
     "serve-favicon": "~2.3.0"

@@ -8,7 +8,7 @@ var User = mongoose.model('User');
 var router = express.Router();
 /* Configure jwt module for routes */
 var jwt = require('express-jwt');
-
+var passport = require('passport');
 // Just for testing
 var Post = mongoose.model('Post');
 
@@ -22,9 +22,9 @@ var auth = jwt({
 var hasAccess = function(accessLevel) {
   return function (req, res, next) {
     var userValidate;
-    if (req.payload && req.payload.email ) {//&& req.session.user.hasAccess(accessLevel)) {
+    if (req.payload && req.payload.username ) {//&& req.session.user.hasAccess(accessLevel)) {
       User
-      .findOne({ email : req.payload.email })
+      .findOne({ username : req.payload.username })
       .exec(function(err, user) {
         if (!user) {
 
@@ -79,6 +79,17 @@ router.delete('/posts/:postid/reviews/:reviewid', auth,ctrlReviews.reviewsDelete
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
 
+// Auth google
+
+router.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+router.get('/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
 
 // Test router
 router.get('/image/:postid', function (req, res) {

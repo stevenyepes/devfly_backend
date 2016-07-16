@@ -17,7 +17,11 @@ var PostSchema = new mongoose.Schema({
   date: {type:Date, "default": Date.now},
   views: {type:Number, "default": 0},
   image: { data: Buffer, contentType: String },
-  category: {type: String, required: true},
+  category: {
+    type: String,
+    required: true,
+    trim : true,
+   },
   reviews : [reviewSchema],
   modified: {type:Date}
 });

@@ -44,6 +44,7 @@ module.exports.postsCreate = function (req, res) {
       return;
     }
     if(req.body.image){
+
       options.path = req.body.image;
       utils.resizeImage(res,options,function(buffer, contentType){
         Post.create({
