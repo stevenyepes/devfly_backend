@@ -1,0 +1,21 @@
+{
+  "name": "devfly-backend",
+  "description": "client app",
+  "main": "./bin/www",
+  "authors": [
+    "Steven <jsteven.yepes@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.7"
+  }
+}
