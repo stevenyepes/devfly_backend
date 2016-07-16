@@ -23,7 +23,8 @@ body {
   line-height: normal; }
 
 .gigantic-subtitle {
-  font-size: 21px;
+  font-size: 22px;
+  font-weight: normal;
   color: #8E78C9;
   padding-top: 0px; }
 
@@ -154,6 +155,28 @@ button {
   border-right: 0; }
   .navbar-small li a {
     padding: 20px 20px 20px 20px; }
+
+.footer {
+  z-index: 5;
+  position: fixed;
+  width: 100%;
+  height: 36px;
+  bottom: 0;
+  background-color: white;
+  border: 1px solid #6A3089;
+  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
+  -moz-box-shadow: 0 2px 15px -1px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 2px 15px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 15px -1px rgba(0, 0, 0, 0.5); }
+  .footer ul {
+    text-align: center;
+    margin-top: 8px; }
+    .footer ul li {
+      display: inline-block;
+      padding-left: 5px;
+      padding-right: 5px; }
 
 .header {
   z-index: -2;
