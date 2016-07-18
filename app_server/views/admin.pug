@@ -1,0 +1,65 @@
+html
+  head
+    title [DevFly] Administracion
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="/bootstrap/bootstrap.min.css")
+    link(rel="stylesheet", href="/css/admin-style.css")
+
+  body(ng-app="admin")
+
+    .sidebar(ng-controller="adminctrl", ng-class="{'sidebar-hide': sided}")
+      .brand
+        h4 DEVFLY
+      .user
+        p Usuario
+      .menu(
+        ng-class="{'menu-hover': hover1, 'menu-active': dashboard}",
+        ng-mouseenter="hover1 = true",
+        ng-mouseleave="hover1 = false",
+        ng-click="menuChange('dashboard')",
+        ng-init="dashboard = true"
+      )
+        img(src="/icons/shop.svg")
+        p Tablero
+      .menu(
+        ng-class="{'menu-hover': hover2, 'menu-active': posts}",
+        ng-mouseenter="hover2 = true",
+        ng-mouseleave="hover2 = false",
+        ng-click="menuChange('posts')"
+      )
+        img(src="/icons/news.svg")
+        p Publicaciones
+      .menu(
+        ng-class="{'menu-hover': hover3, 'menu-active': users}",
+        ng-mouseenter="hover3 = true",
+        ng-mouseleave="hover3 = false",
+        ng-click="menuChange('users')"
+      )
+        img(src="/icons/user.svg")
+        p Usuarios
+
+      .quote
+        p.text "{{quote.quote}}"
+        p.author -- {{quote.author}}
+
+    .container-fluid.content(ng-class="{'content-full': sided}")
+      .row.topbar
+        .col-xs-1.text-left
+          img(src="/icons/sidebar.svg", ng-click="sided = !sided")
+        .col-xs-11
+          h4 PANEL DE ADMINISTRACION
+
+      div(ui-view="")
+
+
+
+    script(src='/bower_components/angular/angular.js')
+    script(src='/bower_components/angular-ui-router/release/angular-ui-router.js')
+
+    script(src="/app_client/libs/jquery.js")
+    script(src="/app_client/admin.js")
+    script(src="/app_client/services/utils.js")
+    script(src="/app_client/controllers/adminctrl.js")
+    script(src="/app_client/controllers/admin-dashboardctrl.js")
+    script(src="/app_client/controllers/admin-postsctrl.js")
+    script(src="/app_client/controllers/admin-usersctrl.js")

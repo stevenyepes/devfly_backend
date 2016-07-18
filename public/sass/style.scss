@@ -1,28 +1,4 @@
-////// Imports
-@import 'mixin';
-@import "hacks";
-// Google font imports
-@import 'https://fonts.googleapis.com/css?family=Montserrat|Raleway';
-
-////// Fonts
-$montserrat: 'Montserrat', sans-serif;
-$raleway: 'Raleway', sans-serif;
-
-////// Colours
-$green-logo: #92B74F;
-$yellow-logo: #FEEF41;
-$grey-logo: #343434;
-$brown-logo: #866825;
-$transparent-90: rgba(255, 255, 255, 0.1);
-$grey-lower: #606060;
-$grey-lowest: #8e8e8e;
-$grey-hard: #2F2F2F;
-$green-logo-shadow: #6C8D44;
-$white: #f6f6f6;
-$purple: #6A3089;
-$purple-low: #8E78C9;
-$purple-lowest: #BFA7DB;
-$lila: #EFE3F3;
+@import "options";
 
 ////// Body
 body {
@@ -104,7 +80,7 @@ input {
   }
 }
 @include placeholder {
-  font-family: $raleway;
+  font-family: $roboto;
   color: $purple-low;
   @include transition(color 0.4s);
 }

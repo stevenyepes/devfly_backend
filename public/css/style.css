@@ -1,6 +1,6 @@
-@import 'https://fonts.googleapis.com/css?family=Montserrat|Raleway';
+@import 'https://fonts.googleapis.com/css?family=Montserrat|Roboto';
 body {
-  background-color: #f6f6f6;
+  background-color: #f8f8f8;
   font-family: "Montserrat", sans-serif;
   margin: 0; }
 
@@ -70,25 +70,25 @@ input {
     border-bottom: 3px solid #6A3089; }
 
 ::-webkit-input-placeholder {
-  font-family: "Raleway", sans-serif;
+  font-family: "Roboto", sans-serif;
   color: #8E78C9;
   -webkit-transition: color 0.4s;
   transition: color 0.4s; }
 
 :-moz-placeholder {
-  font-family: "Raleway", sans-serif;
+  font-family: "Roboto", sans-serif;
   color: #8E78C9;
   -webkit-transition: color 0.4s;
   transition: color 0.4s; }
 
 ::-moz-placeholder {
-  font-family: "Raleway", sans-serif;
+  font-family: "Roboto", sans-serif;
   color: #8E78C9;
   -webkit-transition: color 0.4s;
   transition: color 0.4s; }
 
 :-ms-input-placeholder {
-  font-family: "Raleway", sans-serif;
+  font-family: "Roboto", sans-serif;
   color: #8E78C9;
   -webkit-transition: color 0.4s;
   transition: color 0.4s; }

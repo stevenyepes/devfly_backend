@@ -1,0 +1,200 @@
+@import "options";
+@import "icons";
+
+////// Components
+body {
+  @include antialiasing;
+  font-family: $montserrat;
+  background-color: $white;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+
+.no-padding {
+  padding: 0;
+}
+.no-margin {
+  margin: 0;
+}
+h4 {
+  font-weight: normal;
+}
+
+////// Navbar
+.content {
+  position: relative;
+  margin-left: 220px;
+  @include transition(margin-left);
+}
+.content-full {
+  margin-left: 3px;
+}
+.topbar {
+  background-color: $ligth;
+  border-bottom: 3px solid $normal;
+  text-align: right;
+  padding-right: 5px;
+  padding-left: 5px;
+  color: $normal-upper;
+
+  img {
+    height: 32px;
+    margin-top: 12px;
+    margin-bottom: auto;
+    cursor: pointer;
+  }
+}
+.sidebar {
+  position: fixed;
+  @include flexbox;
+  flex-direction: column;
+  background-color: $ligth;
+  height: 100%;
+  width: 220px;
+  left: 0px;
+  border-right: 3px solid $normal;
+  color: $normal-upper;
+  @include transition(left);
+}
+.sidebar-hide {
+  left: -217px;
+}
+.brand {
+  @include flexbox;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: normal;
+  border-bottom: 3px solid $normal;
+  background-color: $normal;
+  color: $normal-upper;
+}
+.user {
+  @include flexbox;
+  font-family: $roboto;
+  width: 100%;
+  height: 170px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+.quote {
+  @include flexbox;
+  font-family: $roboto;
+  flex-direction: column;
+  padding: 0px 15px 0px 15px;
+  margin: 20px 0px 0px 0px;
+  border-left: 5px solid $grey-lowered;
+  align-self: flex-end;
+
+  .text {
+    text-align: justify;
+    margin: 0;
+    font-size: 12.5px;
+  }
+  .author {
+    margin: 7px 0 0 0;
+    text-align: left;
+    font-size: 11px;
+  }
+}
+.menu {
+  @include flexbox;
+  width: 100%;
+  height: 50px;
+  padding-left: 30px;
+  font-family: $roboto;
+  text-transform: uppercase;
+  font-size: 12px;
+  @include transition(background-color);
+  cursor: pointer;
+
+  img {
+    height: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-right: 10px;
+  }
+  p {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+.menu-hover {
+  background-color: $normal;
+  border-left: 5px solid $normal-upper;
+  padding-left: 25px;
+}
+.menu-active {
+  background-color: $grey-lowest;
+  border-left: 5px solid $normal-upper;
+  padding-left: 25px;
+}
+
+
+////// Content
+.card-holder {
+  @include flexbox;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  padding: 15px;
+
+  .card-3x1 {
+    @include flexbox;
+    width: 300px;
+    height: 100px;
+    border: 1px solid $grey-lowest;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    background-color: white;
+    margin-right: 15px;
+    margin-bottom: 15px;
+
+    .text {
+      @include flexbox;
+      width: 200px;
+      height: 100px;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 15px;
+      margin: 0;
+      font-family: $roboto;
+      font-size: 24px;
+      color: $grey-lower;
+      border-bottom: 3px solid $grey-lowest;
+
+      .title {
+        font-family: $montserrat;
+        font-size: 14px;
+        color: $ligtha-hardest;
+        margin-bottom: 2px;
+        text-transform: capitalize;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .header {
+      @include flexbox;
+      width: 100px;
+      height: 100px;
+      background-color: $ligtha;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border-bottom: 3px solid $ligtha-hard;
+    }
+  }
+}
