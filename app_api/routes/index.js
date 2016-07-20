@@ -22,7 +22,7 @@ var auth = jwt({
 var hasAccess = function(accessLevel) {
   return function (req, res, next) {
     var userValidate;
-    if (req.payload && req.payload.username ) {//&& req.session.user.hasAccess(accessLevel)) {
+    if (req.payload && req.payload.username ) {
       User
       .findOne({ username : req.payload.username })
       .exec(function(err, user) {
@@ -42,7 +42,6 @@ var hasAccess = function(accessLevel) {
       }
 
       if(user.hasAccess(accessLevel)){
-        console.log('Tengo permiso');
         return next();
       }else {
         return res.json({

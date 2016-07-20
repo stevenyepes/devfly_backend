@@ -23,7 +23,7 @@ gulp.task('views', function buildHTML() {
 });
 
 gulp.task('pug:watch', function () {
-  gulp.watch('./public/app_client/pug/*.pug', ['views']);
+  gulp.watch('./public/app_client/pug/**/*.pug', ['views']);
 });
 
 // start our server and listen for changes
