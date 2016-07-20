@@ -1,3 +1,5 @@
+/*jslint node: true */
+'use strict';
 var mongoose = require('mongoose');
 var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
