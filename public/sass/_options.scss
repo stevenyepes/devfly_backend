@@ -1,0 +1,35 @@
+////// Imports
+@import "mixin";
+@import "hacks";
+// Google font imports
+@import 'https://fonts.googleapis.com/css?family=Montserrat|Roboto';
+
+////// Fonts
+$montserrat: 'Montserrat', sans-serif;
+$roboto: 'Roboto', sans-serif;
+
+////// Colours
+$green-logo: #92B74F;
+$yellow-logo: #FEEF41;
+$grey-logo: #343434;
+$brown-logo: #866825;
+$transparent-90: rgba(255, 255, 255, 0.1);
+$grey-lower: #606060;
+$grey-lowered: #cccccc;
+$grey-lowest: #e8e8e8;
+$grey-hard: #2F2F2F;
+$green-logo-shadow: #6C8D44;
+$white: #f8f8f8;
+$purple: #6A3089;
+$purple-hard: #411459;
+$purple-low: #8E78C9;
+$purple-lowest: #BFA7DB;
+$lila: #EFE3F3;
+
+$normal: #7BB3C0;
+$normal-upper: #177D90;
+$ligth: #fbfbfb;
+$ligtha: #CBCDF0;
+$ligtha-hard: #a7aad5;
+$ligtha-hardest: #878bbd;
+$lightb: #DBB4D8;
